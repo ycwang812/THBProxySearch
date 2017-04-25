@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>THBProxySearch</display-name>
+
+	<welcome-file-list>
+		<welcome-file>SearchPage.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>proxysearch</servlet-name>
+		<servlet-class>tw.gov.thb.search.web.ProxySearch</servlet-class>
+		<init-param>
+			<param-name>searchHost</param-name>
+			<param-value>http://10.122.100.52/search?</param-value>
+		</init-param>
+		<init-param>
+			<param-name>filter</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>frontend</param-name>
+			<param-value>website_frontend</param-value>
+		</init-param>
+		<init-param>
+			<param-name>collection</param-name>
+			<param-value>website_collection</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>proxysearch</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>autosearch</servlet-name>
+		<servlet-class>tw.gov.thb.search.web.AutoSearch</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>autosearch</servlet-name>
+		<url-pattern>/suggest</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>domain</param-name>
+		<param-value>thbnet.gov.tw</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>shortdn</param-name>
+		<param-value>THB</param-value>
+	</context-param>
+
+</web-app>
